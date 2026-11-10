@@ -1,3 +1,192 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+header {
+  border-bottom: 1px solid #1e293b;
+  background: rgba(15, 23, 42, 0.9);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  padding: 16px 0;
+  z-index: 50;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2dd4bf;
+  letter-spacing: 1px;
+}
+.address-phone {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #94a3b8;
+  align-items: center;
+}
+.phone {
+  color: #2dd4bf;
+  font-weight: 600;
+  text-decoration: none;
+}
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+}
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+.hero p {
+  color: #94a3b8;
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.btn-primary {
+  background-color: #14b8a6;
+  color: #030712;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+.btn-primary:hover {
+  background-color: #2dd4bf;
+}
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding-bottom: 40px;
+}
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+}
+.card:hover {
+  border-color: #14b8a6;
+}
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+.price {
+  color: #2dd4bf;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.card-btn {
+  background: #334155;
+  color: #f8fafc;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+  transition: background 0.2s;
+}
+.card-btn:hover {
+  background: #0d9488;
+  color: white;
+}
+footer {
+  border-top: 1px solid #1e293b;
+  text-align: center;
+  padding: 30px 0;
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 60px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+.modal {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+.close-btn {
+  position: absolute;
+  top: 15px; right: 15px;
+  background: none; border: none;
+  color: #94a3b8; font-size: 20px; cursor: pointer;
+}
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.form-group label {
+  display: block; font-size: 14px; color: #94a3b8; margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%; padding: 12px; background: #1e293b; border: 1px solid #334155;
+  border-radius: 8px; color: white; box-sizing: border-box; font-size: 16px;
+}
+.form-group input:focus {
+  outline: none; border-color: #14b8a6;
+}
+.selected-badge {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+}
+.success-msg {
+  text-align: center;
+  padding: 20px 0;
+}
+.success-title {
+  color: #4ade80;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
