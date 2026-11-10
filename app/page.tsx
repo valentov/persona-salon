@@ -30,56 +30,38 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <main>
       {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-950/50 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-wider text-teal-400">ПЕРСОНА</span>
-            <span className="text-sm text-slate-400">| Салон красоты</span>
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <span className="text-slate-300">📍 г. Энгельс, ул. 148-й Черниговской Дивизии, 8</span>
-            <a href="tel:+79272281021" className="text-teal-400 font-semibold hover:underline">
-              +7 (927) 228-10-21
-            </a>
+      <header>
+        <div className="container header-content">
+          <div className="logo">ПЕРСОНА <span style={{color: '#94a3b8', fontSize: '14px', fontWeight: 'normal'}}>| Салон красоты</span></div>
+          <div className="address-phone">
+            <span>📍 г. Энгельс, ул. 148-й Черниговской Дивизии, 8</span>
+            <a href="tel:+79272281021" className="phone">+7 (927) 228-10-21</a>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-          Салон красоты «Персона»
-        </h1>
-        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-          Профессиональные парикмахерские услуги, сложное окрашивание и уход за вашими волосами в Энгельсе.
-        </p>
-        <button
-          onClick={() => handleOpenModal()}
-          className="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 cursor-pointer"
-        >
+      {/* Hero */}
+      <section className="container hero">
+        <h1>Салон красоты «Персона»</h1>
+        <p>Профессиональные парикмахерские услуги, сложное окрашивание и уход за вашими волосами в Энгельсе.</p>
+        <button onClick={() => handleOpenModal()} className="btn-primary">
           Записаться онлайн
         </button>
       </section>
 
-      {/* Prices Section */}
-      <section className="max-w-6xl mx-auto px-4 py-12 border-t border-slate-800">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Наши услуги и цены</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Services */}
+      <section className="container">
+        <h2 className="section-title">Наши услуги и цены</h2>
+        <div className="grid">
           {services.map((item, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 flex flex-col justify-between hover:border-teal-500/50 transition"
-            >
+            <div key={index} className="card">
               <div>
-                <h3 className="font-semibold text-lg mb-2 text-slate-200">{item.name}</h3>
-                <p className="text-teal-400 font-bold text-xl mb-4">{item.price}</p>
+                <h3>{item.name}</h3>
+                <div className="price">{item.price}</div>
               </div>
-              <button
-                onClick={() => handleOpenModal(item.name)}
-                className="w-full bg-slate-700 hover:bg-teal-600 hover:text-white text-slate-200 font-medium py-2 px-4 rounded-lg transition cursor-pointer text-sm"
-              >
+              <button onClick={() => handleOpenModal(item.name)} className="card-btn">
                 Выбрать
               </button>
             </div>
@@ -88,62 +70,41 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-8 text-center text-sm text-slate-500 mt-20">
+      <footer>
         <p>© 2026 Салон красоты «Персона». Все права защищены.</p>
-        <p className="mt-1">г. Энгельс, ул. 148-й Черниговской Дивизии, 8 | Тел: +7 (927) 228-10-21</p>
+        <p style={{marginTop: '5px'}}>г. Энгельс, ул. 148-й Черниговской Дивизии, 8 | Тел: +7 (927) 228-10-21</p>
       </footer>
 
-      {/* Booking Modal */}
+      {/* Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold cursor-pointer"
-            >
-              ✕
-            </button>
-            <h3 className="text-xl font-bold mb-4 text-teal-400">Онлайн-запись</h3>
+        <div className="modal-overlay">
+          <div className="modal">
+            <button onClick={() => setModalOpen(false)} className="close-btn">✕</button>
+            <h3 style={{marginTop: 0, color: '#2dd4bf', marginBottom: '20px'}}>Онлайн-запись</h3>
             {submitted ? (
-              <div className="text-center py-8">
-                <p className="text-lg font-semibold text-green-400 mb-2">Заявка успешно отправлена!</p>
-                <p className="text-sm text-slate-300 mb-6">Мы свяжемся с вами в ближайшее время по указанному номеру.</p>
-                <button
-                  onClick={() => setModalOpen(false)}
-                  className="bg-teal-500 text-slate-950 font-bold px-6 py-2 rounded-lg cursor-pointer"
-                >
+              <div className="success-msg">
+                <div className="success-title">Заявка успешно отправлена!</div>
+                <p style={{color: '#94a3b8', fontSize: '14px', marginBottom: '20px'}}>Мы свяжемся с вами в ближайшее время.</p>
+                <button onClick={() => setModalOpen(false)} className="btn-primary" style={{width: '100%'}}>
                   Закрыть
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit}>
                 {selectedService && (
-                  <div className="text-sm bg-slate-800 p-3 rounded-lg text-slate-300 border border-slate-700">
-                    Выбранная услуга: <strong className="text-teal-300">{selectedService}</strong>
+                  <div className="selected-badge">
+                    Услуга: <strong style={{color: '#2dd4bf'}}>{selectedService}</strong>
                   </div>
                 )}
-                <div>
-                  <label className="block text-sm text-slate-400 mb-1">Ваше имя</label>
-                  <input
-                    required
-                    type="text"
-                    placeholder="Введите имя"
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-teal-500"
-                  />
+                <div className="form-group">
+                  <label>Ваше имя</label>
+                  <input required type="text" placeholder="Введите имя" />
                 </div>
-                <div>
-                  <label className="block text-sm text-slate-400 mb-1">Номер телефона</label>
-                  <input
-                    required
-                    type="tel"
-                    placeholder="+7 (___) ___-__-__"
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-teal-500"
-                  />
+                <div className="form-group">
+                  <label>Номер телефона</label>
+                  <input required type="tel" placeholder="+7 (___) ___-__-__" />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-lg transition cursor-pointer mt-2"
-                >
+                <button type="submit" className="btn-primary" style={{width: '100%', marginTop: '10px'}}>
                   Подтвердить запись
                 </button>
               </form>
