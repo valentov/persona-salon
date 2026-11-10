@@ -1,8 +1,9 @@
-import React from 'react';
+import './globals.css';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Салон красоты «Персона» в Энгельсе',
-  description: 'Официальный сайт салона красоты Персона',
+export const metadata: Metadata = {
+  title: 'Салон красоты «Персона»',
+  description: 'Профессиональные парикмахерские услуги в Энгельсе',
 };
 
 export default function RootLayout({
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body style={{ margin: 0, padding: 0 }}>{children}</body>
+      <body className="bg-slate-900 text-slate-100 antialiased">
+        {children}
+      </body>
     </html>
   );
 }
